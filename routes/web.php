@@ -19,8 +19,8 @@ Route::get('/', function () {
 });*/
 Route::controller(\App\Http\Controllers\Index\IndexController::class)->group(function () {
     Route::get('/', 'index');
-    Route::get('products/{product}/show', [\App\Http\Controllers\Index\Products\ProductsController::class, 'show'])->name('index.products.show');
-    Route::post('products/{product}/add-comment', [\App\Http\Controllers\Admin\CommentController::class, 'addComment']);
+    Route::get('products/{product}/show', [\App\Http\Controllers\Index\ProductsController::class, 'show'])->name('index.products.show');
+    Route::post('products/{product}/show/add-comment', [\App\Http\Controllers\Admin\CommentController::class, 'addComment'])->name('addComment');
 });
 
 

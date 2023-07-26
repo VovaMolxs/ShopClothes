@@ -1,5 +1,6 @@
 @extends('layouts.layouts')
 @section('content')
+    @include('layouts.header')
 <!-- Quick view -->
 
 <main class="main">
@@ -67,10 +68,10 @@
                                         </div>
                                         <div class="product-rate-cover text-end">
                                             <div class="product-rate d-inline-block">
-                                                <div class="product-rating" style="width:90%">
+                                                <div class="product-rating" style="width:{{$products->rating}}0%">
                                                 </div>
                                             </div>
-                                            <span class="font-small ml-5 text-muted"> (25 reviews)</span>
+                                            <span class="font-small ml-5 text-muted">{{$products->count_reviews}} Reviews</span>
                                         </div>
                                     </div>
                                     <div class="clearfix product-price-cover">
@@ -270,17 +271,17 @@
                                     <div class="row">
                                         <div class="col-lg-8">
                                             <h4 class="mb-30">Customer questions & answers</h4>
-                                            <div class="comment-list">
+                                            <div class="comment-list" id="comment-list">
                                                 @foreach($comments as $comments)
-                                                <div class="single-comment justify-content-between d-flex">
+                                                <div class="single-comment justify-content-between d-flex" id="comments">
                                                     <div class="user justify-content-between d-flex">
                                                         <div class="thumb text-center">
                                                             <!-- <img src="{{ asset('/storage') }}/assets/imgs/page/avatar-6.jpg" alt=""> -->
-                                                            <h6><a href="#">{{$comments->name}}</a></h6>
+                                                            <h6><a id="user_name" href="#">{{$comments->name}}</a></h6>
                                                         </div>
                                                         <div class="desc">
                                                             <div class="product-rate d-inline-block">
-                                                                <div class="product-rating" style="width:90%">
+                                                                <div class="product-rating" style="width:{{$comments->mark}}0%">
                                                                 </div>
                                                             </div>
                                                             <p>{{$comments->text}}</p>
@@ -302,54 +303,39 @@
 
 
 
-                                        <div class="col-lg-4">
-                                            <h4 class="mb-30">Customer reviews</h4>
-                                            <div class="d-flex mb-30">
-                                                <div class="product-rate d-inline-block mr-15">
-                                                    <div class="product-rating" style="width:90%">
-                                                    </div>
-                                                </div>
-                                                <h6>4.8 out of 5</h6>
-                                            </div>
-                                            <div class="progress">
-                                                <span>5 star</span>
-                                                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
-                                            </div>
-                                            <div class="progress">
-                                                <span>4 star</span>
-                                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                            </div>
-                                            <div class="progress">
-                                                <span>3 star</span>
-                                                <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
-                                            </div>
-                                            <div class="progress">
-                                                <span>2 star</span>
-                                                <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
-                                            </div>
-                                            <div class="progress mb-30">
-                                                <span>1 star</span>
-                                                <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-                                            </div>
-                                            <a href="#" class="font-xs text-muted">How are ratings calculated?</a>
-                                        </div>
+
                                     </div>
                                 </div>
+
+                                    @if(isset(Auth::user()->name) && (!isset($comments->id)))
                                 <!--comment form-->
                                 <div class="comment-form">
                                     <h4 class="mb-15">Add a review</h4>
-                                    <div class="product-rate d-inline-block mb-30">
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-8 col-md-12">
+                                            <form action="{{route('addComment', $products->id)}}" method="post">
 
                                                 <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                                                 <input type="hidden" name="product_id" id="product_id" value="{{ $products->id }}">
-                                                <input type="hidden" name="user_id" id="user_id" value="{{ $comments->user_id }}">
+                                                <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id}}">
+                                                <select class="form-select" name="mark" id="review_mark" aria-label="Default select example">
+                                                    <option value="0">0</option>
+                                                    <option value="1">0.5</option>
+                                                    <option value="2">1</option>
+                                                    <option value="3">1.5</option>
+                                                    <option value="4">2</option>
+                                                    <option value="5">2.5</option>
+                                                    <option value="6">3</option>
+                                                    <option value="7">3.5</option>
+                                                    <option value="8">4</option>
+                                                    <option value="9">4.5</option>
+                                                    <option value="10">5</option>
+                                                </select>
+
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
-                                                            <input type="text" id="review_mark" name="mark">
                                                             <textarea class="form-control w-100" name="text" id="review_text" cols="30" rows="9" placeholder="Write Comment"></textarea>
                                                         </div>
                                                     </div>
@@ -358,10 +344,56 @@
                                                     <button type="submit" id="send_review" class="button button-contactForm">Submit
                                                         Review</button>
                                                 </div>
+                                            </form>
 
                                         </div>
                                     </div>
                                 </div>
+                                    @elseif (Auth::user()->id !== $comments->user_id)
+                            <!--comment form-->
+                            <div class="comment-form">
+                                <h4 class="mb-15">Add a review</h4>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-8 col-md-12">
+                                    <form action="{{route('addComment', $products->id)}}" method="post">
+
+                                        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="product_id" id="product_id" value="{{ $products->id }}">
+                                        <input type="hidden" name="user_id" id="user_id" value="{{ Auth::user()->id}}">
+                                        <select class="form-select" name="mark" id="review_mark" aria-label="Default select example">
+                                            <option value="0">0</option>
+                                            <option value="1">0.5</option>
+                                            <option value="2">1</option>
+                                            <option value="3">1.5</option>
+                                            <option value="4">2</option>
+                                            <option value="5">2.5</option>
+                                            <option value="6">3</option>
+                                            <option value="7">3.5</option>
+                                            <option value="8">4</option>
+                                            <option value="9">4.5</option>
+                                            <option value="10">5</option>
+                                        </select>
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <textarea class="form-control w-100" name="text" id="review_text" cols="30" rows="9" placeholder="Write Comment"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" id="send_review" class="button button-contactForm">Submit
+                                                Review</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                    </div>
+
+
+                                    @endif
                             </div>
                         </div>
 

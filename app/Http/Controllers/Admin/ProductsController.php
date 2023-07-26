@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use App\Models\Products;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller
 {
@@ -57,9 +56,6 @@ class ProductsController extends Controller
 
 
         $pathToImage = preg_replace('/\bpublic\//', '', ProductImageController::update($request));
-
-
-
 
 
                 Products::create([

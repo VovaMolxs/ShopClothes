@@ -59,7 +59,7 @@
                                 <h2><a href="shop-product-right.html">{{$products->title}}</a></h2>
                                 <div class="rating-result" title="90%">
                                             <span>
-                                                <span>95%</span>
+                                                <span>{{$products->rating}}%</span>
                                             </span>
                                 </div>
                                 <div class="product-price">

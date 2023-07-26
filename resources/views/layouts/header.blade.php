@@ -35,7 +35,13 @@
                                         <li><a href="#"><img src="{{ url('assets/imgs/theme/flag-ru.png') }}" alt="">Pусский</a></li>
                                     </ul>
                                 </li>
-                                <li><i class="fi-rs-user"></i><a href="page-login-register.html">Log In / Sign Up</a></li>
+                                <li><i class="fi-rs-user"></i>
+                                    @if(!isset(Auth::user()->name))
+                                        <a href="{{ route('login') }}">Log In / Sign Up</a>
+                                    @else
+                                        <a href="{{ route('dashboard') }}">{{Auth::user()->name}} </a>
+                                    @endif
+                                </li>
                             </ul>
                         </div>
                     </div>

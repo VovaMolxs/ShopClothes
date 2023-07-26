@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Index\Products;
+namespace App\Http\Controllers\Index;
 
 use App\Http\Controllers\Controller;
 use App\Models\Categories;
@@ -44,7 +44,7 @@ class ProductsController extends Controller
         $comments = Reviews::join('products', 'reviews.product_id', '=',  'products.id')
             ->join('users', 'reviews.user_id', '=', 'users.id')
             ->get(['reviews.*', 'products.id', 'users.name', 'users.id'])->where('product_id', $id);
-
+        //dd($comments);
         return view('products.products_item', compact('products', 'categories', 'comments'));
     }
 

@@ -8,13 +8,33 @@ use Illuminate\Database\Eloquent\Model;
 class Categories extends Model
 {
     protected $fillable = [
-        'name',
-        'description',
-        'slug'
+        'title',
+        'parent_id',
+        'order',
+        'slug',
+        'image',
+        'h1_title',
+        'desc_title',
     ];
     use HasFactory;
 
-    public function products() {
-        return $this->hasMany(Products::class, 'category_id', 'id');
+
+    public function childrens()
+    {
+
+        return $this->hasMany(Categories::class, 'parent_id', 'id');
     }
+
+    public function parent()
+    {
+
+        return $this->hasOne(Categories::class, 'id', 'parent_id');
+    }
+
+    public function getUrl()
+    {
+        return '/products/'. $this->slug;
+    }
+
+
 }

@@ -19,24 +19,21 @@
                     </button>
                 </li>
             </ul>
-            <a href="#" class="view-more d-none d-md-flex">View More<i
+            <a href="{{ url('products') }}" class="view-more d-none d-md-flex">View More<i
                     class="fi-rs-angle-double-small-right"></i></a>
         </div>
         <!--End nav-tabs-->
         <div class="tab-content wow fadeIn animated" id="myTabContent">
             <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
                 <div class="row product-grid-4">
-
-
-
-                    @foreach($products as $products)
+                    @foreach($products as $product)
                     <div class="col-lg-3 col-md-4 col-12 col-sm-6">
                         <div class="product-cart-wrap mb-30">
                             <div class="product-img-action-wrap">
                                 <div class="product-img product-img-zoom">
-                                    <a href="{{ route('index.products.show', $products->id) }}">
-                                        <img class="default-img" src="{{ asset('storage/') }}/{{$products->link_image}}" alt="">
-                                        <img class="hover-img" src="{{ asset('storage/') }}/{{$products->link_image}}" alt="">
+                                    <a href="{{ route('index.products.show', $product->id) }}">
+                                        <img class="default-img" src="{{ asset('storage/') }}/{{$product->link_image}}" alt="">
+                                        <img class="hover-img" src="{{ asset('storage/') }}/{{$product->link_image}}" alt="">
                                     </a>
                                 </div>
                                 <div class="product-action-1">
@@ -54,17 +51,17 @@
                             </div>
                             <div class="product-content-wrap">
                                 <div class="product-category">
-                                    <a href="shop-grid-right.html">{{$products->name}}</a>
+                                    <a href="shop-grid-right.html">{{$product->category->title}}</a>
                                 </div>
-                                <h2><a href="shop-product-right.html">{{$products->title}}</a></h2>
+                                <h2><a href="shop-product-right.html">{{$product->title}}</a></h2>
                                 <div class="rating-result" title="90%">
                                             <span>
-                                                <span>{{$products->rating}}%</span>
+                                                <span>{{$product->rating}}%</span>
                                             </span>
                                 </div>
                                 <div class="product-price">
-                                    <span>$ {{ $products->promotional_price }}</span>
-                                    <span class="old-price">${{ $products->regular_price }}</span>
+                                    <span>$ {{ $product->promotional_price }}</span>
+                                    <span class="old-price">${{ $product->regular_price }}</span>
                                 </div>
                                 <div class="product-action-1 show">
                                     <a aria-label="Add To Cart" class="action-btn hover-up"

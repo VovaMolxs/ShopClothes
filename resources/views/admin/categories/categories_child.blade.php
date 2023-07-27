@@ -28,23 +28,23 @@
                     <div class="col-md-3">
                         <form action="{{ url('admin/categories') }}" method="post">
                             @csrf
+                            <input type="hidden" value="{{$id}}" name="parent_id">
                             <div class="mb-4">
                                 <label for="product_name" class="form-label">Имя категории</label>
                                 <input type="text" placeholder="Type here" class="form-control" id="product_name" name="title"/>
                             </div>
                             <div class="mb-4">
-                                <label for="product_slug" class="form-label">Категория (site/"категория"/...)</label>
+                                <label for="product_slug" class="form-label">Категория</label>
                                 <input type="text" placeholder="Type here" class="form-control" id="product_slug" name="slug"/>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label">Описание</label>
+                                <label class="form-label">desc-Описание</label>
                                 <textarea placeholder="Type here" class="form-control" name="desc_title"></textarea>
                             </div>
                             <div class="mb-4">
                                 <label for="product_name" class="form-label">H1 заголовок</label>
                                 <input type="text" placeholder="Type here" class="form-control" id="h1_title" name="h1_title"/>
                             </div>
-
                             <div class="d-grid">
                                 <button class="btn btn-primary">Создать категорию</button>
                             </div>
@@ -73,37 +73,36 @@
                                 </thead>
                                 <tbody>
                                 @foreach($categories as $cat)
-                                <tr>
-                                    <td class="text-center">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" />
-                                        </div>
-                                    </td>
-                                    <td>{{$cat->id}}</td>
-                                    <td><b>{{$cat->title}}</b></td>
-                                    <td>{{$cat->parent_id}}</td>
-                                    <td>{{$cat->order}}</td>
-                                    <td>{{$cat->slug}}</td>
-                                    <td>{{$cat->h1_title}}</td>
-                                    <td>{{$cat->desc_title}}</td>
-                                    <td class="text-end">
-                                        <div class="dropdown">
-                                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
-                                            <div class="dropdown-menu">
-
-                                                <form action="{{ route('categories.destroy', $cat->id) }}" method="post">
-                                                    <a class="dropdown-item" href="{{ route('categories.edit', $cat->id) }}">Изменить</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="dropdown-item text-danger">Удалить</button>
-                                                </form>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" />
                                             </div>
-                                        </div>
+                                        </td>
+                                        <td>{{$cat->id}}</td>
+                                        <td><b><a href="{{$cat->getUrl()}}" >{{$cat->title}}</a></b></td>
+                                        <td>{{$cat->parent->title}}</td>
+                                        <td>{{$cat->order}}</td>
+                                        <td>{{$cat->slug}}</td>
+                                        <td>{{$cat->h1_title}}</td>
+                                        <td>{{$cat->desc_title}}</td>
+                                        <td class="text-end">
+                                            <div class="dropdown">
+                                                <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                                <div class="dropdown-menu">
+
+                                                    <form action="{{ route('categories.destroy', $cat->id) }}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="dropdown-item text-danger">Удалить</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                     </td>
-                                </tr>
-                                @endforeach
-                                    </td>
-                                </tr>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

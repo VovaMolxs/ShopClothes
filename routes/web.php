@@ -22,7 +22,7 @@ Route::controller(\App\Http\Controllers\Index\IndexController::class)->group(fun
     Route::get('products/', [\App\Http\Controllers\Index\IndexController::class, 'products'])->name('catalog');
     Route::get('products/{slug}', [\App\Http\Controllers\Index\IndexController::class, 'products'])->name('catalog');
     Route::get('products/{product}/show', [\App\Http\Controllers\Index\ProductsController::class, 'show'])->name('index.products.show');
-    Route::post('products/{product}/show/add-comment', [\App\Http\Controllers\Admin\CommentController::class, 'addComment'])->name('addComment');
+    Route::post('products/{product}/show/add-comment', [\App\Http\Controllers\Index\CommentController::class, 'addComment'])->name('addComment');
 });
 
 

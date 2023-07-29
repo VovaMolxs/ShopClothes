@@ -25,9 +25,9 @@ return new class extends Migration
             $table->integer('width');
             $table->integer('height');
             $table->integer('weight');
-            $table->integer('rating');
-            $table->integer('count_reviews');
-            $table->integer('selling');
+            $table->integer('rating')->default(0);
+            $table->integer('count_reviews')->default(0);
+            $table->integer('selling')->default(0);
             $table->unsignedBigInteger('category_id')->nullable();
             $table->integer('shipping_fees');
             $table->timestamps();

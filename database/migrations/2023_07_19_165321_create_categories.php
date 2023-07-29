@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->char('title');
-            $table->char('parent_id');
-            $table->char('order')->nullable();
+            $table->char('parent_id')->default('');
+            $table->char('order')->default('');
             $table->char('slug');
-            $table->char('image')->nullable();
+            $table->char('image')->default('');
             $table->char('h1_title');
             $table->char('desc_title');
             $table->timestamps();

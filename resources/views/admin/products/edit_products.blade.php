@@ -140,9 +140,9 @@
                             <div class="row gx-2">
                                 <div class="col-sm-12 mb-3">
                                     <label class="form-label">Category</label>
-                                    <select class="form-select" name="categories">
+                                    <select class="form-select" name="category_id">
                                         @foreach($categories as $categories)
-                                            <option value="{{$categories->id}}"> {{$categories->name}} </option>
+                                            <option value="{{$categories->id}}"> {{$categories->title}} </option>
                                         @endforeach
                                     </select>
                                 </div>

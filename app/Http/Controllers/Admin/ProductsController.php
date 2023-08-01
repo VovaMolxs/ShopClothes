@@ -102,7 +102,7 @@ class ProductsController extends Controller
             "shipping_fees" => "required|numeric|min:1",
             "status" => "required",
             "link_image" => "image|nullable|max:1999",
-            "older_link_image" => 'required|min:10|max:20',
+            "older_link_image" => 'required|min:10',
             "category_id" => "required",
             "tags" => "required|min:3",
         ]);

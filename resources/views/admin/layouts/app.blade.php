@@ -53,14 +53,26 @@
                     <span class="text">Dashboard</span>
                 </a>
             </li>
-            <li class="menu-item has-submenu">
-                <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
-                    <span class="text">Products</span>
+            <li class="menu-item ">
+                <a class="menu-link" href="{{ route('products.index')}}"> <i class="icon material-icons md-shopping_cart"></i>
+                    <span class="text">Product list</span>
                 </a>
-                <div class="submenu">
-                    <a href="{{ route('products.index')}}">Product List</a>
-                    <a href="{{ route ('categories.index')}}">Categories</a>
-                </div>
+            </li>
+            <li class="menu-item ">
+                <a class="menu-link" href="{{ route('products.create') }}"> <i class="icon material-icons md-add_box"></i>
+                    <span class="text">Product add</span>
+                </a>
+            </li>
+            <li class="menu-item ">
+                <a class="menu-link" href="{{ route ('categories.index')}}"> <i class="icon material-icons md-shopping_cart"></i>
+                    <span class="text">Categories</span>
+                </a>
+            </li>
+
+            <li class="menu-item">
+                <a class="menu-link" href="{{route('reviews.index')}}"> <i class="icon material-icons md-comment"></i>
+                    <span class="text">Reviews</span>
+                </a>
             </li>
             <li class="menu-item has-submenu">
                 <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-shopping_cart"></i>
@@ -82,14 +94,7 @@
                     <a href="page-seller-detail.html">Seller profile</a>
                 </div>
             </li>
-            <li class="menu-item has-submenu">
-                <a class="menu-link" href="page-form-product-1.html"> <i class="icon material-icons md-add_box"></i>
-                    <span class="text">Add product</span>
-                </a>
-                <div class="submenu">
-                    <a href="{{ route('products.create') }}">Add product 1</a>
-                </div>
-            </li>
+
             <li class="menu-item has-submenu">
                 <a class="menu-link" href="page-transactions-1.html"> <i class="icon material-icons md-monetization_on"></i>
                     <span class="text">Transactions</span>
@@ -99,21 +104,7 @@
                     <a href="page-transactions-2.html">Transaction 2</a>
                 </div>
             </li>
-            <li class="menu-item has-submenu">
-                <a class="menu-link" href="#"> <i class="icon material-icons md-person"></i>
-                    <span class="text">Account</span>
-                </a>
-                <div class="submenu">
-                    <a href="page-account-login.html">User login</a>
-                    <a href="page-account-register.html">User registration</a>
-                    <a href="page-error-404.html">Error 404</a>
-                </div>
-            </li>
-            <li class="menu-item">
-                <a class="menu-link" href="page-reviews.html"> <i class="icon material-icons md-comment"></i>
-                    <span class="text">Reviews</span>
-                </a>
-            </li>
+
             <li class="menu-item">
                 <a class="menu-link" href="page-brands.html"> <i class="icon material-icons md-stars"></i>
                     <span class="text">Brands</span> </a>

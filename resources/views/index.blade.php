@@ -748,7 +748,7 @@
                                                 </div>
                                                 <div class="product-action-1 show">
                                                     <a aria-label="Add To Cart" class="action-btn hover-up"
-                                                       href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                       href=""><i class="fi-rs-shopping-bag-add"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -771,7 +771,7 @@
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
                 <div class="text-center">
-                    <h5 class="mb-5">Now Loading</h5>
+                    <h5 class="mb-5">Идет загрузка</h5>
                     <div class="loader">
                         <div class="bar bar1"></div>
                         <div class="bar bar2"></div>

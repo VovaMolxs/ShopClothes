@@ -21,10 +21,8 @@ class IndexController extends Controller
     public function index() {
         //dd(Auth::user()->name);
 
-        $products = Products::all();
-
-
-        return view('index', compact('products'));
+        $productsPopular = Products::where('status', 'active')->get();
+        return view('index', compact('productsPopular'));
     }
 
     public function products($slug = '') {

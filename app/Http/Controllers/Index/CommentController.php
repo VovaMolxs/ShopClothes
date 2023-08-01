@@ -22,7 +22,7 @@ class CommentController extends Controller
         $commentInfo = $request->all();
         $user_id = (int) $request->user_id;
 
-        //Проверка на отзыв от пользователя, если нету то добавляем отзыв на товар
+        //Проверка на отзыв от пользователя
         $this->service->addComments($commentInfo, $user_id, $id);
 
         return back();

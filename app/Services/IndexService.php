@@ -17,6 +17,7 @@ class IndexService
                     //dd($breadcrumb->parent_id);
                     $products = Products::join('categories', 'products.category_id', '=',  'categories.id')
                         ->where('categories.parent_id', $breadcrumb->id)
+                        ->andWhere('products.status', '=', 'active')
                         ->get(['products.*']);
 
                     $category = $breadcrumb->childrens;
@@ -24,6 +25,7 @@ class IndexService
                 } else {
                     $products = Products::join('categories', 'products.category_id', '=',  'categories.id')
                         ->where('categories.id', $breadcrumb->id)
+                        ->andWhere('products.status','=', 'active')
                         ->get(['products.*']);
 
                     $category = $breadcrumb->childrens;
@@ -34,7 +36,8 @@ class IndexService
 
         } else {
             $category = Categories::where('parent_id', '')->get();
-            $products = Products::all();
+            $products = Products::where('status', '=', 'active')->get();
+
             return compact('category', 'products');
         }
 

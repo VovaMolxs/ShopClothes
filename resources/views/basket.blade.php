@@ -38,7 +38,7 @@
                                 $itemCost = $product->regular_price * $product->pivot->quantity;
                                 $basketCost = $basketCost + $itemCost;
                                 @endphp
-                            <tr>
+                            <tr class="tr_{{$product->id}}">
                                 <td class="image"><img src="{{ asset('storage/') }}/{{$product->link_image}}" alt="#"></td>
                                 <td class="product-des">
                                     <h5 class="product-name"><a href="shop-product-right.html">{{$product->title}}</a></h5>
@@ -47,31 +47,35 @@
                                 <td class="price" data-title="Price"><span>${{$product->regular_price}}</span></td>
                                 <td class="text-center" data-title="Stock">
                                     <div class="detail-qty border radius  m-auto" style="max-width: 150px;">
-                                        <form action="{{route('basket.minus', $product->id)}}" class="d-inline" method="post">
-                                            @csrf
-                                            <button class=" border-0 m-0 p-0 "><i class="fas fa-minus-square">---</i></button>
 
-                                        </form>
+                                            <button id="quantity_minus"
+                                                    data-product_id="{{$product->id}}"
+                                                    data-token="{{csrf_token()}}"
+                                                    data-quantity="{{$product->pivot->quantity}}"
+                                                    data-cost="{{$product->regular_price}}"
+                                                    class="minus minus_{{$product->id}} border-0 m-0 p-0 "><i class="fas fa-minus-square">---</i></button>
 
-                                        <span class="qty-val">{{$product->pivot->quantity}}</span>
-                                        <form action="{{route('basket.plus', $product->id)}}" class="d-inline" method="post">
-                                            @csrf
-                                            <button  class=" border-0 m-0 p-0 " ><i class="fas fa-plus-square">+++</i></button>
+                                        <span  class="qty-val_{{$product->id}}">{{$product->pivot->quantity}}</span>
 
-                                        </form>
+                                            <button id="quantity_plus"
+                                                    data-product_id="{{$product->id}}"
+                                                    data-token="{{csrf_token()}}"
+                                                    data-quantity="{{$product->pivot->quantity}}"
+                                                    data-cost="{{$product->regular_price}}"
+                                                    class="plus plus_{{$product->id}} border-0 m-0 p-0 " ><i class="fas fa-plus-square">+++</i></button>
+
+
 
                                     </div>
                                 </td>
                                 <td class="text-right" data-title="Cart">
-                                    <span>${{$itemCost}} </span>
+                                    <span class="product_cost_{{$product->id}}" >${{$itemCost}} </span>
                                 </td>
                                 <td class="action" data-title="Remove">
-                                    <form action="{{route('basket.remove', $product->id)}}" method="post">
-                                        @csrf
-                                        @method('destroy')
-                                        <button class="border-0" ><i class="fi-rs-trash"></i></button>
-
-                                </form>
+                                        <button class="border-0 remove"
+                                                data-product_id="{{$product->id}}"
+                                                data-token="{{csrf_token()}}"
+                                        ><i class="fi-rs-trash"></i></button>
                                 </td>
                             </tr>
                             @endforeach
@@ -95,8 +99,7 @@
                         </table>
                     </div>
                     <div class="cart-action text-end">
-                        <a class="btn  mr-10 mb-sm-15"><i class="fi-rs-shuffle mr-10"></i>Update Cart</a>
-                        <a class="btn "><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a>
+                        <a class="btn "><i class="fi-rs-shopping-bag mr-10"></i>Продолжить покупки</a>
                     </div>
                     <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
                     <div class="row mb-50">

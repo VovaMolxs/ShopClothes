@@ -44,14 +44,17 @@ class BasketController extends Controller
         echo json_encode($request->all());
     }
 
-    public function plus($id) {
-        $this->basket->increase($id);
-        return redirect()->route('basket');
+    public function plus(Request $request) {
+        $this->basket->increase($request->get('product_id'));
+        $request['basket_items'] = Basket_products::where('basket_id', '=', $request->cookie('basket_id'))->sum('quantity');
+        echo json_encode($request->all());
     }
 
-    public function minus($id) {
-        $this->basket->decrease($id);
-        return redirect()->route('basket');
+    public function minus(Request $request) {
+        $this->basket->decrease($request->get('product_id'));
+        $request['basket_items'] = Basket_products::where('basket_id', '=', $request->cookie('basket_id'))->sum('quantity');
+
+        echo json_encode($request->all());
     }
 
     /**
@@ -71,9 +74,11 @@ class BasketController extends Controller
         Cookie::queue('basket_id', $this->basket->id, 525600);
     }
 
-    public function remove($id) {
-        $this->basket->remove($id);
-        return redirect()->route('basket');
+    public function remove(Request $request) {
+
+        $this->basket->remove($request->get('product_id'));
+        $request['basket_items'] = Basket_products::where('basket_id', '=', $request->cookie('basket_id'))->sum('quantity');
+        echo json_encode($request->all());
     }
 
     public function clear() {

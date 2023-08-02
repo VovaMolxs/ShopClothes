@@ -21,10 +21,10 @@ Route::controller(\App\Http\Controllers\Index\IndexController::class)->group(fun
     Route::get('/', 'index');
     Route::get('basket', [\App\Http\Controllers\BasketController::class, 'index'])->name('basket');
     Route::post('basket/clear', [\App\Http\Controllers\BasketController::class, 'clear'])->name('basket.clear');
-    Route::post('basket/plus/{id}', [\App\Http\Controllers\BasketController::class, 'plus'])->name('basket.plus');
-    Route::post('basket/minus/{id}', [\App\Http\Controllers\BasketController::class, 'minus'])->name('basket.minus');
+    Route::post('basket-plus', [\App\Http\Controllers\BasketController::class, 'plus'])->name('basket-plus');
+    Route::post('basket-minus', [\App\Http\Controllers\BasketController::class, 'minus'])->name('basket-minus');
     Route::post('add-basket', [\App\Http\Controllers\BasketController::class, 'add'])->name('add-basket');
-    Route::post('basket/remove/{id}', [\App\Http\Controllers\BasketController::class, 'remove'])->name('basket.remove');
+    Route::post('basket-remove', [\App\Http\Controllers\BasketController::class, 'remove'])->name('basket-remove');
     Route::get('products/', [\App\Http\Controllers\Index\IndexController::class, 'products'])->name('catalog');
     Route::get('products/{slug}', [\App\Http\Controllers\Index\IndexController::class, 'products'])->name('catalog');
     Route::get('products/{product}/show', [\App\Http\Controllers\Index\ProductsController::class, 'show'])->name('index.products.show');

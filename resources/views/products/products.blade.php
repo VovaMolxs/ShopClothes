@@ -98,7 +98,7 @@
                                     <h2><a href="shop-product-right.html">{{$product->title}}</a></h2>
                                     <div class="rating-result" title="90%">
                                             <span>
-                                                <span>{{$product->rating}}%</span>
+                                                <span>{{$product->rating}}0%</span>
                                             </span>
                                     </div>
                                     <div class="product-price">

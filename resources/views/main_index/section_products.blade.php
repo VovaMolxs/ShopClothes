@@ -39,8 +39,7 @@
                                 </div>
                                 <div class="product-action-1 show">
                                         <input type="hidden" id="token" value="{{csrf_token()}}">
-                                        <input type="hidden" id="product_id" value="{{$product->id}}">
-                                        <button id="add_product" aria-label="В корзину"  class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></button>
+                                        <button id="add_product" data-id="{{$product->id}}" aria-label="В корзину"  class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></button>
                                 </div>
                             </div>
                         </div>

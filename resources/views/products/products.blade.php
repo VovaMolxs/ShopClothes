@@ -6,18 +6,7 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="/" rel="nofollow">Главная</a>
-                <span></span>
-                <a href="{{ url('products') }}" rel="nofollow">Каталог</a>
-                <span></span>
 
-                @if(!empty($breadcrumb->parent->title))
-                    <a href="{{$breadcrumb->parent->getUrl()}}" rel="nofollow">{{$breadcrumb->parent->title}}</a>
-                    <span></span>
-                @endif
-                @if(!empty($breadcrumb))
-                {{$breadcrumb->title}}
-                @endif
             </div>
         </div>
     </div>

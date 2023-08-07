@@ -27,7 +27,6 @@ class IndexController extends Controller
 
     public function products($slug = '') {
 
-
         return view('products.products', $this->service->products($slug));
 
 

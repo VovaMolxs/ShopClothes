@@ -18,15 +18,18 @@ Route::get('/', function () {
     return view('index');
 });*/
 Route::controller(\App\Http\Controllers\Index\IndexController::class)->group(function () {
-    Route::get('/', 'index');
+    Route::get('/', 'index')->name('index');
     Route::get('basket', [\App\Http\Controllers\BasketController::class, 'index'])->name('basket');
     Route::post('basket/clear', [\App\Http\Controllers\BasketController::class, 'clear'])->name('basket.clear');
     Route::post('basket-plus', [\App\Http\Controllers\BasketController::class, 'plus'])->name('basket-plus');
     Route::post('basket-minus', [\App\Http\Controllers\BasketController::class, 'minus'])->name('basket-minus');
     Route::post('add-basket', [\App\Http\Controllers\BasketController::class, 'add'])->name('add-basket');
     Route::post('basket-remove', [\App\Http\Controllers\BasketController::class, 'remove'])->name('basket-remove');
+    Route::get('checkout', [\App\Http\Controllers\CheckoutController::class, 'index'])->name('checkout');
+    Route::post('addOrder', [\App\Http\Controllers\CheckoutController::class, 'addOrder'])->name('addOrder');
+    Route::get('checkout_success', [\App\Http\Controllers\CheckoutController::class, 'success'])->name('checkout.success');
     Route::get('products/', [\App\Http\Controllers\Index\IndexController::class, 'products'])->name('catalog');
-    Route::get('products/{slug}', [\App\Http\Controllers\Index\IndexController::class, 'products'])->name('catalog');
+    Route::get('products/{slug}', [\App\Http\Controllers\Index\IndexController::class, 'products'])->name('catalog.slug');
     Route::get('products/{product}/show', [\App\Http\Controllers\Index\ProductsController::class, 'show'])->name('index.products.show');
     Route::post('products/{product}/show/add-comment', [\App\Http\Controllers\Index\CommentController::class, 'addComment'])->name('addComment');
 });

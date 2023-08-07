@@ -11,10 +11,11 @@ use Illuminate\Support\Facades\Cookie;
 class BasketController extends Controller
 {
     private $basket;
-    private $basket_products;
+    public $products;
 
     public function __construct() {
         $this->getBasket();
+        $this->products = $this->basket->products;
     }
 
     /**
@@ -47,6 +48,7 @@ class BasketController extends Controller
     public function plus(Request $request) {
         $this->basket->increase($request->get('product_id'));
         $request['basket_items'] = Basket_products::where('basket_id', '=', $request->cookie('basket_id'))->sum('quantity');
+
         echo json_encode($request->all());
     }
 
@@ -60,7 +62,7 @@ class BasketController extends Controller
     /**
      * Возвращает объект корзины; если не найден — создает новый
      */
-    private function getBasket() {
+    public function getBasket() {
         $basket_id = request()->cookie('basket_id');
         if (!empty($basket_id)) {
             try {
@@ -84,5 +86,14 @@ class BasketController extends Controller
     public function clear() {
         $this->basket->delete();
         return redirect()->route('basket');
+    }
+
+    public function getAmount() {
+        $amount = 0.0;
+        foreach ($this->basket->products as $product) {
+
+            $amount = $amount + $product->regular_price * $product->pivot->quantity;
+        }
+        return $amount;
     }
 }

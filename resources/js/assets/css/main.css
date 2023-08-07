@@ -2482,11 +2482,11 @@ label {
 }
 
 .page-header .breadcrumb {
-  display: inline-block;
+
   padding: 0;
   text-transform: capitalize;
   color: #6e6e6e;
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   background: none;
   margin: 0;
   border-radius: 0;

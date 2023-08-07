@@ -25,6 +25,10 @@ $(document).ready(function () {
     $('button.remove').on('click', function (e){
         let product_id = $(this).attr('data-product_id')
         let token = $(this).attr('data-token')
+        let quantity = Number($(this).attr("data-quantity"));
+        let cost = Number($(this).attr("data-cost"));
+        let basket_cost = Number($('.basket_cost').attr('data-basket_cost'))
+        console.log(quantity)
 
         $.post(
             'basket-remove',
@@ -35,6 +39,8 @@ $(document).ready(function () {
                 response = JSON.parse(response)
                 $(`.tr_${product_id}`).detach()
                 $("#basket-count").html(response.basket_items)
+                $('.basket_cost').attr('data-basket_cost', (basket_cost-cost)*quantity)
+                $('.basket_cost').html('$ ' + ((basket_cost-cost)*quantity))
             }
         )
     })
@@ -47,7 +53,8 @@ $(document).ready(function () {
         let product_id =  $(this).attr("data-product_id");
         let token =     $(this).attr("data-token");
         let quantity = $(this).attr("data-quantity");
-        let cost = $(this).attr("data-cost");
+        let cost = Number($(this).attr("data-cost"));
+        let basket_cost = Number($('.basket_cost').attr('data-basket_cost'))
 
         $.post(
             'basket-plus',
@@ -63,7 +70,10 @@ $(document).ready(function () {
             $(`.minus_${product_id}`).attr('data-quantity', quantity)
             $(`.plus_${product_id}`).attr('data-quantity', quantity)
             $(`.product_cost_${product_id}`).html(`$` + cost*quantity)
-            console.log(quantity);
+            $(`button.remove_${product_id}`).attr('data-quantity', quantity)
+            $(`button.remove_${product_id}`).attr('data-cost', cost*quantity)
+            $('.basket_cost').attr('data-basket_cost', basket_cost+cost)
+            $('.basket_cost').html('$ ' + (basket_cost+cost))
         })
 
     })
@@ -75,7 +85,8 @@ $(document).ready(function () {
         let product_id =  $(this).attr("data-product_id");
         let token =     $(this).attr("data-token");
         let quantity = $(this).attr("data-quantity");
-        let cost = $(this).attr("data-cost");
+        let cost = Number($(this).attr("data-cost"));
+        let basket_cost = Number($('.basket_cost').attr('data-basket_cost'))
 
         $.post(
             'basket-minus',
@@ -87,11 +98,24 @@ $(document).ready(function () {
             response = JSON.parse(response)
             console.log($(`span.minus_ + ${product_id}`));
             $("#basket-count").html(response.basket_items)
-            $(`.qty-val_${product_id}`).html(quantity)
-            $(`.minus_${product_id}`).attr('data-quantity', quantity)
-            $(`.plus_${product_id}`).attr('data-quantity', quantity)
-            $(`.product_cost_${product_id}`).html(`$` + cost*quantity)
-            console.log(quantity);
+            if (quantity < 1) {
+                $(`.tr_${product_id}`).detach()
+                $("#basket-count").html(response.basket_items)
+                $('.basket_cost').attr('data-basket_cost', (basket_cost-cost)*1)
+                $('.basket_cost').html('$ ' + ((basket_cost-cost)*1))
+            } else {
+                $(`.qty-val_${product_id}`).html(quantity)
+                $(`.minus_${product_id}`).attr('data-quantity', quantity)
+                $(`.plus_${product_id}`).attr('data-quantity', quantity)
+                $(`button.remove_${product_id}`).attr('data-quantity', quantity)
+                $(`button.remove_${product_id}`).attr('data-cost', cost*quantity)
+                $(`.product_cost_${product_id}`).html(`$` + cost*quantity)
+                $('.basket_cost').attr('data-basket_cost', basket_cost-cost)
+                $('.basket_cost').html('$ ' + (basket_cost-cost))
+            }
+
+
+            console.log(basket_cost-cost);
         })
 
     })

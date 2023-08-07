@@ -2,6 +2,13 @@
 @section('content')
     @include('layouts.header')
     <main class="main">
+        <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    {{ Breadcrumbs::render() }}
+                </div>
+            </div>
+        </div>
         @include('main_index.main_promo')
         @include('main_index.section_feature')
         @include('main_index.section_products')

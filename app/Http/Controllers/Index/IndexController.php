@@ -20,9 +20,9 @@ class IndexController extends Controller
 
     public function index() {
         //dd(Auth::user()->name);
-
+        $productsBest = Products::orderBy('rating', 'desc')->get();
         $productsPopular = Products::where('status', 'active')->get();
-        return view('index', compact('productsPopular'));
+        return view('index', compact('productsPopular', 'productsBest'));
     }
 
     public function products($slug = '') {

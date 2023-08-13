@@ -55,6 +55,7 @@
                                         <img alt="Evara" src="{{ url('assets/imgs/theme/icons/icon-cart.svg') }}">
                                         <span id="basket-count" class="pro-count blue">{{\App\Models\Basket_products::where('basket_id', '=', Illuminate\Support\Facades\Cookie::get('basket_id'))->sum('quantity')}}</span>
                                     </a>
+                                    <!--
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                         <ul>
                                             <li>
@@ -92,6 +93,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    -->
                                 </div>
                             </div>
                         </div>

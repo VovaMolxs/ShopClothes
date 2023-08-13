@@ -70,21 +70,12 @@
                                             <img class="hover-img" src="{{ asset('storage/') }}/{{$product->link_image}}" alt="">
                                         </a>
                                     </div>
-                                    <div class="product-action-1">
-                                        <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-                                            <i class="fi-rs-search"></i></a>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
-                                    </div>
-                                    <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="hot">Hot</span>
-                                    </div>
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
                                         <a href="shop-grid-right.html">{{$product->category->title}}</a>
                                     </div>
-                                    <h2><a href="shop-product-right.html">{{$product->title}}</a></h2>
+                                    <h2><a href="{{ route('index.products.show', $product->id) }}">{{$product->title}}</a></h2>
                                     <div class="rating-result" title="90%">
                                             <span>
                                                 <span>{{$product->rating}}0%</span>
@@ -95,7 +86,8 @@
                                         <span class="old-price">${{ $product->regular_price }}</span>
                                     </div>
                                     <div class="product-action-1 show">
-                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                        <input type="hidden" id="token" value="{{csrf_token()}}">
+                                        <button id="add_product" data-id="{{$product->id}}" aria-label="В корзину"  class="action-btn hover-up"><i class="fi-rs-shopping-bag-add"></i></button>
                                     </div>
                                 </div>
                             </div>

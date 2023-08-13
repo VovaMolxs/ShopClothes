@@ -35,9 +35,16 @@ Route::controller(\App\Http\Controllers\Index\IndexController::class)->group(fun
 });
 
 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function() {
+    Route::match(['GET', 'POST'], '/payments/callback', [\App\Http\Controllers\PaymentController::class, 'callback'])->name('payment.callback');
+    Route::post('/payments/create', [\App\Http\Controllers\PaymentController::class, 'create'])->name('payment.create');
+    Route::get('/payments', [\App\Http\Controllers\PaymentController::class, 'index'])->name('payment.index');
+});
 
 
 Route::middleware('auth')->group(function() {
@@ -45,6 +52,7 @@ Route::middleware('auth')->group(function() {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     });
 
 
@@ -54,6 +62,8 @@ Route::middleware('auth')->group(function() {
        Route::resource('categories', \App\Http\Controllers\Admin\CategoriesController::class);
        Route::resource('products', \App\Http\Controllers\Admin\ProductsController::class);
        Route::resource('reviews', \App\Http\Controllers\Admin\ReviewsController::class);
+       Route::resource('orders', \App\Http\Controllers\Admin\OrderController::class);
+       Route::get('transaction', [\App\Http\Controllers\Admin\TransactionController::class, 'index'])->name('transaction.index');
         });
 
 

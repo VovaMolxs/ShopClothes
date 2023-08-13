@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->string('first-name');
-            $table->string('last-name');
-            $table->string('cname');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('cname')->nullable();
             $table->string('billing_address');
-            $table->string('billing_address2');
+            $table->string('billing_address2')->nullable();
             $table->string('city');
+            $table->string('status')->default('payment');
             $table->string('state');
             $table->integer('zipcode');
             $table->string('email');

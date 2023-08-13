@@ -48,12 +48,10 @@
                                                 <th>{{ number_format($order->amount, 2, '.', '') }}</th>
                                             </tr>
 
-
-
                                         </tbody>
                                     </table>
 
-                                    </table>
+
 
                                     <h2>Ваши данные</h2>
                                     <p>Имя, фамилия: {{ $order->first_name }} {{$order->last_name}}</p>
@@ -63,7 +61,10 @@
                                     @isset ($order->comment)
                                         <p>Комментарий: {{ $order->comment }}</p>
                                     @endisset
+                                    <a class="btn btn-primary btn-lg" href="{{route('payment.index')}}">Подтвердить и перейти к оплате заказа!</a>
                                 </div>
+
+
 
 
 

@@ -74,16 +74,12 @@
                     <span class="text">Reviews</span>
                 </a>
             </li>
-            <li class="menu-item has-submenu">
-                <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-shopping_cart"></i>
+            <li class="menu-item">
+                <a class="menu-link" href="{{route('orders.index')}}"> <i class="icon material-icons md-shopping_cart"></i>
                     <span class="text">Orders</span>
                 </a>
-                <div class="submenu">
-                    <a href="page-orders-1.html">Order list 1</a>
-                    <a href="page-orders-2.html">Order list 2</a>
-                    <a href="page-orders-detail.html">Order detail</a>
-                </div>
             </li>
+
             <li class="menu-item has-submenu">
                 <a class="menu-link" href="page-sellers-cards.html"> <i class="icon material-icons md-store"></i>
                     <span class="text">Sellers</span>
@@ -100,8 +96,8 @@
                     <span class="text">Transactions</span>
                 </a>
                 <div class="submenu">
-                    <a href="page-transactions-1.html">Transaction 1</a>
-                    <a href="page-transactions-2.html">Transaction 2</a>
+                    <a href="{{route('transaction.index')}}">Transaction 1</a>
+
                 </div>
             </li>
 

@@ -56,7 +56,8 @@ class CheckoutController extends Controller
             ]);
         }
 
-        // уничтожаем корзинуBasket::find(request()->cookie('basket_id'))->delete();
+        // уничтожаем корзину
+        Basket::find(request()->cookie('basket_id'))->delete();
 
         return redirect()
             ->route('checkout.success')

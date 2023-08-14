@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-9 col-md-12">
+                    <div class="col-lg-12 col-md-12">
                         <div class="tab-content wow fadeIn animated" id="myTabContent-1">
                             <div class="tab-pane fade show active" id="tab-one-1" role="tabpanel"
                                  aria-labelledby="tab-one-1">
@@ -77,9 +77,9 @@
                                             <div class="product-img-action-wrap">
                                                 <div class="product-img product-img-zoom">
                                                     <a href="{{ route('index.products.show', $product->id) }}">
-                                                        <img class="default-img" src="{{ asset('storage/') }}/{{$product->link_image}}"
+                                                        <img class="default-img" src="{{$product->link_image}}"
                                                              alt="">
-                                                        <img class="hover-img" src="{{ asset('storage/') }}/{{$product->link_image}}"
+                                                        <img class="hover-img" src="{{$product->link_image}}"
                                                              alt="">
                                                     </a>
                                                 </div>

@@ -17,16 +17,14 @@ class IndexService
                     //dd($breadcrumb->parent_id);
                     $products = Products::join('categories', 'products.category_id', '=',  'categories.id')
                         ->where('categories.parent_id', $breadcrumb->id)
-
-                        ->get(['products.*']);
+                        ->paginate(12);
 
                     $category = $breadcrumb->childrens;
                     return compact('breadcrumb', 'products', 'category');
                 } else {
                     $products = Products::join('categories', 'products.category_id', '=',  'categories.id')
                         ->where('categories.id', $breadcrumb->id)
-
-                        ->get(['products.*']);
+                        ->paginate(12);
 
                     $category = $breadcrumb->childrens;
                     return compact('breadcrumb', 'products', 'category');
@@ -36,7 +34,7 @@ class IndexService
 
         } else {
             $category = Categories::where('parent_id', '')->get();
-            $products = Products::where('status', '=', 'active')->get();
+            $products = Products::where('status', '=', 'active')->paginate(12);
 
             return compact('category', 'products');
         }

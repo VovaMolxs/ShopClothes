@@ -12,9 +12,10 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $products = Products::latest()->paginate(10);
-        return view('admin.products.products', compact('products'))
-            ->with('i', (request()->input('page', default: 1) - 1) * 5);
+        $products = Products::latest()->paginate(20);
+
+        return view('admin.products.products', compact('products'));
+
 
     }
 

@@ -8,8 +8,6 @@
                 <p>Lorem ipsum dolor sit amet.</p>
             </div>
             <div>
-                <a href="#" class="btn btn-light rounded font-md">Export</a>
-                <a href="#" class="btn btn-light rounded  font-md">Import</a>
                 <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm rounded">Create new</a>
             </div>
         </div>
@@ -44,7 +42,7 @@
             </header> <!-- card-header end// -->
             <div class="card-body">
 
-                @foreach($products as $products)
+                @foreach($products as $product)
                 <article class="itemlist">
                     <div class="row align-items-center">
                         <div class="col col-check flex-grow-0">
@@ -55,31 +53,31 @@
                         <div class="col-lg-4 col-sm-4 col-8 flex-grow-1 col-name">
                             <a class="itemside" href="#">
                                 <div class="left">
-                                    <img src="{{$products->link_image}}" class="img-sm img-thumbnail" alt="Item">
+                                    <img src="{{$product->link_image}}" class="img-sm img-thumbnail" alt="Item">
                                 </div>
                                 <div class="info">
-                                    <h6 class="mb-0">{{$products->title}}</h6>
+                                    <h6 class="mb-0">{{$product->title}}</h6>
                                 </div>
                             </a>
                         </div>
-                        <div class="col-lg-2 col-sm-2 col-4 col-price"> <span>${{ $products->regular_price }}</span> </div>
+                        <div class="col-lg-2 col-sm-2 col-4 col-price"> <span>${{ $product->regular_price }}</span> </div>
                         <div class="col-lg-2 col-sm-2 col-4 col-status">
-                            @if($products->status == 'active')
+                            @if($product->status == 'active')
                             <span class="badge rounded-pill alert-success">Active</span>
-                            @elseif ($products->status == 'archive')
+                            @elseif ($product->status == 'archive')
                                 <span class="badge rounded-pill alert-warning">Archive</span>
-                            @elseif ($products->status == 'disabled')
+                            @elseif ($product->status == 'disabled')
                                 <span class="badge rounded-pill alert-danger">Disabled</span>
                             @endif
                         </div>
                         <div class="col-lg-1 col-sm-2 col-4 col-date">
-                            <span>{{ $products->updated_at->format('d.m.Y') }}</span>
+                            <span>{{ $product->updated_at->format('d.m.Y') }}</span>
                         </div>
                         <div class="col-lg-2 col-sm-2 col-4 col-action text-end">
-                            <a href="{{ route('products.edit', $products->id) }}" class="btn btn-sm font-sm rounded btn-brand">
+                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-sm font-sm rounded btn-success">
                                 <i class="material-icons md-edit"></i> Edit
                             </a>
-                            <a href="#" class="btn btn-sm font-sm btn-light rounded">
+                            <a href="#" class="btn btn-sm font-sm btn-danger rounded">
                                 <i class="material-icons md-delete_forever"></i> Delete
                             </a>
                         </div>
@@ -89,19 +87,7 @@
 
             </div> <!-- card-body end// -->
         </div> <!-- card end// -->
-        <div class="pagination-area mt-30 mb-50">
-            <nav aria-label="Page navigation example">
-
-                <ul class="pagination justify-content-start">
-                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                    <li class="page-item"><a class="page-link" href="#">02</a></li>
-                    <li class="page-item"><a class="page-link" href="#">03</a></li>
-                    <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-                    <li class="page-item"><a class="page-link" href="#">16</a></li>
-                    <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li>
-                </ul>
-            </nav>
-        </div>
+        {{ $products -> links() }}
     </section> <!-- content-main end// -->
     <footer class="main-footer font-xs">
         <div class="row pb-30 pt-15">

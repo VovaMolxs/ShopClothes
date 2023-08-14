@@ -21,7 +21,7 @@ class IndexController extends Controller
     public function index() {
         //dd(Auth::user()->name);
         $productsBest = Products::orderBy('rating', 'desc')->limit(8)->get();
-        $productsPopular = Products::where('status', 'active')->get();
+        $productsPopular = Products::where('status', 'active')->limit(12)->get();
         return view('index', compact('productsPopular', 'productsBest'));
     }
 

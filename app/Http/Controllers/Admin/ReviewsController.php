@@ -7,14 +7,17 @@ use App\Models\Reviews;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+
 class ReviewsController extends Controller
 {
 
     public function index()
     {
-        $reviews = User::join('reviews', 'users.id', '=',  'reviews.user_id')->
-            join('products', 'reviews.product_id', '=', 'products.id')
-        ->get(['reviews.*', 'users.name', 'products.title']);
+        $reviews = User::join('reviews', 'users.id', '=',  'reviews.user_id')
+            ->join('products', 'reviews.product_id', '=', 'products.id')
+            ->get(['reviews.*', 'users.name', 'products.title'])
+            ->paginate(12);
+
 
 
 

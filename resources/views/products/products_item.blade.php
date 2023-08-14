@@ -23,50 +23,40 @@
                                         <!-- MAIN SLIDES -->
                                         <div class="product-image-slider">
                                             <figure class="border-radius-10">
-                                                <img src="{{asset('/storage')}}/{{$products->link_image}}"
+                                                <img src="{{$product->link_image}}"
                                                      alt="product image">
                                             </figure>
                                             <figure class="border-radius-10">
-                                                <img src="{{asset('/storage')}}/{{$products->link_image}}"
+                                                <img src="{{$product->link_image}}"
                                                      alt="product image">
                                             </figure>
                                             <figure class="border-radius-10">
-                                                <img src="{{asset('/storage')}}/{{$products->link_image}}"
+                                                <img src="{{$product->link_image}}"
                                                      alt="product image">
                                             </figure>
                                             <figure class="border-radius-10">
-                                                <img src="{{asset('/storage')}}/{{$products->link_image}}"
+                                                <img src="{{$product->link_image}}"
                                                      alt="product image">
                                             </figure>
                                             <figure class="border-radius-10">
-                                                <img src="{{asset('/storage')}}/{{$products->link_image}}"
+                                                <img src="{{$product->link_image}}"
                                                      alt="product image">
                                             </figure>
-                                            <figure class="border-radius-10">
-                                                <img src="{{asset('/storage')}}/{{$products->link_image}}"
-                                                     alt="product image">
-                                            </figure>
-                                            <figure class="border-radius-10">
-                                                <img src="{{asset('/storage')}}/{{$products->link_image}}"
-                                                     alt="product image">
-                                            </figure>
+
                                         </div>
                                         <!-- THUMBNAILS -->
                                         <div class="slider-nav-thumbnails pl-15 pr-15">
-                                            <div><img src="{{asset('/storage')}}/{{$products->link_image}}"
+                                            <div><img src="{{$product->link_image}}"
                                                       alt="product image"></div>
-                                            <div><img src="{{asset('/storage')}}/{{$products->link_image}}"
+                                            <div><img src="{{$product->link_image}}"
                                                       alt="product image"></div>
-                                            <div><img src="{{asset('/storage')}}/{{$products->link_image}}"
+                                            <div><img src="{{$product->link_image}}"
                                                       alt="product image"></div>
-                                            <div><img src="{{asset('/storage')}}/{{$products->link_image}}"
+                                            <div><img src="{{$product->link_image}}"
                                                       alt="product image"></div>
-                                            <div><img src="{{asset('/storage')}}/{{$products->link_image}}"
+                                            <div><img src="{{$product->link_image}}"
                                                       alt="product image"></div>
-                                            <div><img src="{{asset('/storage')}}/{{$products->link_image}}"
-                                                      alt="product image"></div>
-                                            <div><img src="{{asset('/storage')}}/{{$products->link_image}}"
-                                                      alt="product image"></div>
+
                                         </div>
                                     </div>
                                     <!-- End Gallery -->

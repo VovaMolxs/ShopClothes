@@ -50,7 +50,7 @@ class ProductsController extends Controller
 
 
         $pathToImage = preg_replace('/\bpublic\//', '', ProductImageController::update($request));
-
+        $pathToImage = "http://" . $_SERVER['SERVER_NAME'] . '/storage/' . $pathToImage;
 
                 Products::create([
                     "title" => $request['title'],

@@ -53,7 +53,11 @@
                                 <div class="header-action-icon-2">
                                     <a class="mini-cart-icon" href="{{route('basket')}}">
                                         <img alt="Evara" src="{{ url('assets/imgs/theme/icons/icon-cart.svg') }}">
-                                        <span id="basket-count" class="pro-count blue">{{\App\Models\Basket_products::where('basket_id', '=', Illuminate\Support\Facades\Cookie::get('basket_id'))->sum('quantity')}}</span>
+                                        <span id="basket-count" class="pro-count blue">
+                                            @if(!empty(\App\Models\Basket_products::all()))
+                                                {{\App\Models\Basket_products::where('basket_id', '=', Illuminate\Support\Facades\Cookie::get('basket_id'))->sum('quantity')}}
+                                            @endif
+                                        </span>
                                     </a>
                                     <!--
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2">

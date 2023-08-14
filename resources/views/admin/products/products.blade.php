@@ -55,7 +55,7 @@
                         <div class="col-lg-4 col-sm-4 col-8 flex-grow-1 col-name">
                             <a class="itemside" href="#">
                                 <div class="left">
-                                    <img src="{{ asset('storage/') }}/{{ $products->link_image }}" class="img-sm img-thumbnail" alt="Item">
+                                    <img src="{{$products->link_image}}" class="img-sm img-thumbnail" alt="Item">
                                 </div>
                                 <div class="info">
                                     <h6 class="mb-0">{{$products->title}}</h6>

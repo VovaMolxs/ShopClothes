@@ -56,8 +56,8 @@ class CategoriesController extends Controller
 
     public function edit(Categories $categories, $id)
     {
-        $categories = Categories::find($id)->childrens;
-        //dd($categories->childrens);
+        $categories = Categories::find($id)->childrens->all();
+
         return view('admin.categories.categories_child', compact('categories', 'id'));
     }
 
@@ -82,7 +82,7 @@ class CategoriesController extends Controller
     {
 
         //dd($id);
-        Categories::destroy($id);
+        Categories::deleted($id);
         return redirect()->route('categories.index')->with('success', 'Categories deleted');
     }
 

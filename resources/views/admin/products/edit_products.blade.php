@@ -126,7 +126,7 @@
                         </div>
                         <div class="card-body">
                             <div class="input-upload">
-                                <img src="{{ asset('storage/') }}/{{ $products->link_image }}" alt="">
+                                <img src="{{$products->link_image}}" alt="">
                                 <input class="form-control" type="file" name="link_image">
                                 <input type="hidden" value="{{$products->link_image}}" name="older_link_image">
                             </div>

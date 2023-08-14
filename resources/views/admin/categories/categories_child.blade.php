@@ -81,7 +81,7 @@
                                         </td>
                                         <td>{{$cat->id}}</td>
                                         <td><b><a href="{{$cat->getUrl()}}" >{{$cat->title}}</a></b></td>
-                                        <td>{{$cat->parent->title}}</td>
+                                        <td></td>
                                         <td>{{$cat->order}}</td>
                                         <td>{{$cat->slug}}</td>
                                         <td>{{$cat->h1_title}}</td>

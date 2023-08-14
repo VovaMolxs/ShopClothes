@@ -118,7 +118,7 @@
                                         $total += ($product->regular_price*$product->pivot->quantity);
                                         @endphp
                                     <tr>
-                                        <td class="image product-thumbnail"><img src="{{ asset('storage/') }}/{{$product->link_image}}" alt="#"></td>
+                                        <td class="image product-thumbnail"><img src="{{$product->link_image}}" alt="#"></td>
                                         <td>
                                             <h5><a href="shop-product-full.html">{{$product->title}}</a></h5> <span class="product-qty">x {{$product->pivot->quantity}}</span>
                                         </td>

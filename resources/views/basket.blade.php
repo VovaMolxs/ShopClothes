@@ -37,7 +37,7 @@
                                 $basketCost = $basketCost + $itemCost;
                                 @endphp
                             <tr class="tr_{{$product->id}}">
-                                <td class="image"><img src="{{ asset('storage/') }}/{{$product->link_image}}" alt="#"></td>
+                                <td class="image"><img src="{{$product->link_image}}" alt="#"></td>
                                 <td class="product-des">
                                     <h5 class="product-name"><a href="shop-product-right.html">{{$product->title}}</a></h5>
                                     <p class="font-xs">{{$product->description}}</p>

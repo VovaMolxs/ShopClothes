@@ -5,6 +5,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(\App\Http\Controllers\Index\IndexController::class)->group(function () {
     Route::get('/', 'index')->name('index');
+
+    Route::get('login/{provider}', [\App\Http\Controllers\LoginController::class, 'redirectToProvider']);
+    Route::get('{provider}/callback', [\App\Http\Controllers\LoginController::class, 'handleProviderCallback']);
+    Route::get('/home', function() {
+        return 'User is logged in';
+    });
     Route::get('basket', [\App\Http\Controllers\BasketController::class, 'index'])->name('basket');
     Route::post('basket/clear', [\App\Http\Controllers\BasketController::class, 'clear'])->name('basket.clear');
     Route::post('basket-plus', [\App\Http\Controllers\BasketController::class, 'plus'])->name('basket-plus');
@@ -17,6 +23,7 @@ Route::controller(\App\Http\Controllers\Index\IndexController::class)->group(fun
     Route::get('products/', [\App\Http\Controllers\Index\IndexController::class, 'products'])->name('catalog');
     Route::get('products/{slug}', [\App\Http\Controllers\Index\IndexController::class, 'products'])->name('catalog.slug');
     Route::get('products/{product}/show', [\App\Http\Controllers\Index\ProductsController::class, 'show'])->name('index.products.show');
+    Route::post('products/{product}/add-basket', [\App\Http\Controllers\BasketController::class, 'add'])->name('add-basket');
     Route::post('products/{product}/show/add-comment', [\App\Http\Controllers\Index\CommentController::class, 'addComment'])->name('addComment');
 });
 

@@ -29,17 +29,13 @@ class IndexService
                     $category = $breadcrumb->childrens;
                     return compact('breadcrumb', 'products', 'category');
                 }
-
             }
-
         } else {
             $category = Categories::where('parent_id', '')->get();
             $products = Products::where('status', '=', 'active')->paginate(12);
 
             return compact('category', 'products');
         }
-
-
 
 }
 }

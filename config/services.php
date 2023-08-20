@@ -34,6 +34,12 @@ return [
     'yookassa' => [
         'shop_id' => env('YOOKASSA_SHOP_ID', default: null),
         'secret_key' => env('YOOKASSA_SECRET_KEY', default: null)
-    ]
+    ],
+
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID', default: null),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET_KEY', default: null),
+        'redirect' => env('GOOGLE_REDIRECT', default: null),
+    ],
 
 ];

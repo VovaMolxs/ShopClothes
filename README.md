@@ -22,6 +22,7 @@
 ## Установка
 
 - Клонируйте данный репозиторий себе
+- создайте .env файл и сгенерируйте ключ приложения php artisan key:generate
 - В файле конфигурации .env в конце добавьте следующие строки
   - YOOKASSA_SHOP_ID=239596
   - YOOKASSA_SECRET_KEY=test_QVtWNWEmC-fQi8lZ9ivsnpUCTSvMvdxVX4WxdCCb_Yk

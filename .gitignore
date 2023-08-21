@@ -1,9 +1,10 @@
 /.phpunit.cache
 /node_modules
 /public/build
+!/public/assets
+!/publlic/ngrock.exe
 /public/hot
 /public/storage
-/public/assets
 /resources/assets/imgs
 /storage/*.key
 /vendor

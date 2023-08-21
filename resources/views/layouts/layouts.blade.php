@@ -41,14 +41,15 @@
 'resources/js/assets/js/plugins/scrollup.js',
 'resources/js/assets/js/plugins/jquery.theia.sticky.js',
 'resources/js/assets/js/plugins/jquery.elevatezoom.js',
+'resources/js/assets/js/plugins/jquery.vticker-min.js',
 'resources/js/assets/js/main.js',
 'resources/js/assets/js/shop.js',
 'resources/js/AddReviews.js',
-'resources/js/addProductBasket.js'
+'resources/js/addProductBasket.js',
+'resources/js/wow.js',
 ])
 <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-<script src="{{ url('assets/js/plugins/wow.js') }}"></script>
-<script src="{{ url('assets/js/plugins/jquery.vticker-min.js') }}"></script>
+
 
 <!-- Mirrored from wp.alithemes.com/html/evara/evara-frontend/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 01 Aug 2021 15:25:49 GMT -->
 </html>
